@@ -1,0 +1,35 @@
+[package]
+name = "mammoth-rs"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+authors = ["DaniilPak"]
+description = "Convert .docx documents to clean, semantic HTML or Markdown, driven by styles. A pure-Rust port of mammoth.js."
+license = "(MIT OR Apache-2.0) AND BSD-2-Clause"
+repository = "https://github.com/DaniilPak/mammoth-rs"
+documentation = "https://docs.rs/mammoth-rs"
+readme = "README.md"
+keywords = ["docx", "word", "html", "markdown", "mammoth"]
+categories = ["parser-implementations", "text-processing", "command-line-utilities"]
+exclude = ["/.github"]
+
+[features]
+default = []
+# Builds the `mammoth-rs` command-line tool.
+cli = []
+
+[dependencies]
+base64 = "0.23.1"
+quick-xml = "0.42.0"
+zip = { version = "9.5.0", default-features = false, features = ["deflate"] }
+
+[dev-dependencies]
+zip = { version = "9.5.0", default-features = false, features = ["deflate"] }
+
+[[bin]]
+name = "mammoth-rs"
+path = "src/bin/mammoth-rs.rs"
+required-features = ["cli"]
+
+[package.metadata.docs.rs]
+all-features = true
